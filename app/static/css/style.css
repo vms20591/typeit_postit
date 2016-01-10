@@ -1,0 +1,24 @@
+div#postMessageBlock{
+	border-right:1px solid #596A7B;
+}
+
+div#messageListBlock{
+	display:none;
+}
+
+#noMessage{
+	display:none;
+}
+
+div#loadingMessageBlock{
+	display:none;
+}
+
+#messageFooter{
+	border-top: 1px solid #596A7B;
+	margin-top:100px;
+}
+
+#postIcon:disabled,#updateButton:disabled,#deleteButton:disabled{
+	opacity:0.5;
+}
