@@ -22,3 +22,18 @@ div#loadingMessageBlock{
 #postIcon:disabled,#updateButton:disabled,#deleteButton:disabled{
 	opacity:0.5;
 }
+
+#jumbotron_customized {
+	width:879px;
+    padding: 10px;
+    border:2px solid #596A7B;
+    border-radius: 10000px;
+}
+
+#jumbotron_customized img{
+	border-radius:10px;
+}
+
+#jumbotron_customized .media-body{
+	padding-left:25px;
+}

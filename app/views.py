@@ -120,6 +120,10 @@ class MessageView(MethodView):
 			response=(response_body,status_code,response_headers)
 		
 		return response
-		
+				
+@main.app_errorhandler(404)
+def error_handler_404(err):
+	return render_template('main/404.html')
+	
 main.add_url_rule('/',view_func=IndexView.as_view('index_view'))		
 main.add_url_rule('/message',view_func=MessageView.as_view('message_view'))

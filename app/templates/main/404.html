@@ -1,0 +1,31 @@
+{%extends "main/base.html"%}
+
+{%block title%}
+	<title>TypeItWePostIt Not Found</title>
+{%endblock title%}
+
+{%block container%}
+	<div id="jumbotron_customized" class="container">
+		<div class="row">
+			<div class="col-sm-7 col-sm-offset-2">
+				<div class="media">
+					<div class="pull-left">
+						<img class="img-rounded img-responsive" width="150" height="150" src="{{url_for('static',filename='images/yoda404.jpg')}}" alt="Not Found"></img>
+					</div>
+					<div class="media-body">
+						<p><h5>Oops!  Found requested resource not!</h5></p>
+						<p><h5>Sure this is the resource you want are you?</h5></p>
+						<blockquote class="pull-right">
+							<small><cite>Admin Yoda</cite></small>
+					</blockquote>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<p><h5 class="text-center">May the force be with you</h5></p>
+			</div>
+		</div>
+	</div>
+{%endblock container%}

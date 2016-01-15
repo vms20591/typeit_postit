@@ -1,184 +1,112 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>TypeItWePostIt</title>
-		<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" />
-		<link rel="stylesheet" href="{{url_for('static',filename='font-awesome/css/font-awesome.min.css')}}" />
-		<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
-		<link rel="icon" type="image/png" href="{{url_for('static',filename='images/favicon-32x32.png')}}" sizes="32x32" />		
-	</head>
-	<body>
-		<nav role="navigation" class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button data-toggle="collapse" data-target="#navbarCollapse" class="navbar-toggle">
-						<span class="sr-only">Toggle</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="#" class="navbar-brand">
-						<span style="display:block">Type'N'Post</span>
-					</a>
-				</div>
-				<!--
-				<div id="navbarCollapse" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href=""><i class="fa fa-user fa-fw"> </i>Register</a></li>
-						<li><a href=""><i class="fa fa-key fa-fw"></i> Login</a></li>
-					</ul>
-				</div>-->
-			</div>
-		</nav>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-6" id="postMessageBlock">
-					<h2 class="text-center">Type It We Post It</h2>
-					<hr/>
-					<form class="form-horizontal" id="postMessageForm">
-						<div class="form-group">
-							<label class="control-label col-xs-2" for="user_name">Name</label>
-							<div class="col-xs-10">
-								<input type="text" name="user_name" id="user_name" class="form-control"/>								
-							</div>
+{%extends "main/base.html"%}
+
+{%block title%}
+	<title>TypeItWePostIt Dashboard</title>
+{%endblock title%}
+
+{%block container%}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6" id="postMessageBlock">
+				<h2 class="text-center">Type It We Post It</h2>
+				<hr/>
+				<form class="form-horizontal" id="postMessageForm">
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="user_name">Name</label>
+						<div class="col-xs-10">
+							<input type="text" name="user_name" id="user_name" class="form-control"/>								
 						</div>
-						<div class="form-group">
-							<label class="control-label col-xs-2" for="user_message">Message</label>
-							<div class="col-xs-10">
-								<textarea name="user_message" id="user_message" rows="5" cols="30" class="form-control"></textarea>
-							</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-2" for="user_message">Message</label>
+						<div class="col-xs-10">
+							<textarea name="user_message" id="user_message" rows="5" cols="30" class="form-control"></textarea>
 						</div>
-						<div class="form-group">
-							<div class="col-xs-offset-2 col-xs-10">
-								<button type="submit" id="postIcon" class="btn btn-primary">Post</button>
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<button type="submit" id="postIcon" class="btn btn-primary">Post</button>
 						</div>
-					</form>
-				</div>
-				<div class="col-sm-6">
-					<h2 class="text-center">Messages</h2>
-					<hr/>
-					<div class="text-center" id="loadingMessageBlock">
-						<img src="{{url_for('static',filename='images/ring.svg')}}" alt="loading..." width="50" height="50" />
-						<p>loading messages ...</p>
 					</div>
-					<div class="text-center" id="noMessage">
-						<p>No new messages to display.</p>
-					</div>
-					<div class="table-responsive" id="messageListBlock">
-						<table class="table table-striped table-hover table-bordered">
-							<thead>
-								<th>Name</th>
-								<th>Message</th>
-								<th>Actions</th>
-							</thead>
-							<tbody id="messageList">
-							</tbody>
-						</table>
-					</div>
-				</div>
+				</form>
 			</div>
 			<div class="col-sm-6">
-				<div class="modal fade" id="editModal">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" data-dismiss="modal" class="close" aria-hidden="true">&times;</button>
-								<h3>Edit Message</h3>
-							</div>
-							<div class="modal-body">
-								<form class="form-horizontal" id="editMessageForm">
-									<div class="form-group">
-										<label class="control-label col-xs-2" for="edit_user_name">Name</label>
-										<div class="col-xs-10">
-											<input type="text" name="edit_user_name" id="edit_user_name" class="form-control"/>								
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-xs-2" for="edit_user_message">Message</label>
-										<div class="col-xs-10">
-											<textarea name="edit_user_message" id="edit_user_message" rows="5" cols="30" class="form-control"></textarea>
-										</div>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary" id="updateButton">Update</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							</div>
-						</div>
-					</div>
+				<h2 class="text-center">Messages</h2>
+				<hr/>
+				<div class="text-center" id="loadingMessageBlock">
+					<img src="{{url_for('static',filename='images/ring.svg')}}" alt="loading..." width="50" height="50" />
+					<p>loading messages ...</p>
+				</div>
+				<div class="text-center" id="noMessage">
+					<p>No new messages to display.</p>
+				</div>
+				<div class="table-responsive" id="messageListBlock">
+					<table class="table table-striped table-hover table-bordered">
+						<thead>
+							<th>Name</th>
+							<th>Message</th>
+							<th>Actions</th>
+						</thead>
+						<tbody id="messageList">
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<div class="col-sm-6">
-				<div class="modal fade" id="deleteModal">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" data-dismiss="modal" class="close" aria-hidden="true">&times;</button>
-								<h3>Delete Message</h3>
-							</div>
-							<div class="modal-body">
-								<p class="text-warning">Are you sure you want to perform this action?</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-primary" id="deleteButton">Submit</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-							</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="modal fade" id="editModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" data-dismiss="modal" class="close" aria-hidden="true">&times;</button>
+							<h3>Edit Message</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal" id="editMessageForm">
+								<div class="form-group">
+									<label class="control-label col-xs-2" for="edit_user_name">Name</label>
+									<div class="col-xs-10">
+										<input type="text" name="edit_user_name" id="edit_user_name" class="form-control"/>								
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-xs-2" for="edit_user_message">Message</label>
+									<div class="col-xs-10">
+										<textarea name="edit_user_message" id="edit_user_message" rows="5" cols="30" class="form-control"></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" id="updateButton">Update</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		<footer class="text-center" id="messageFooter">
-		    <div class="footer-above">
-		        <div class="container">
-		            <div class="row">
-		                <div class="footer-col col-md-4">
-		                    <h3>Location</h3>
-		                    <p>Chennai, India</p>
-		                </div>
-		                <div class="footer-col col-md-4">
-		                    <h3>Around the Web</h3>
-		                    <ul class="list-inline">
-		                        <li>
-		                            <a href="#"><i class="fa fa-fw fa-facebook"></i></a>
-		                        </li>
-		                        <li>
-		                            <a href="#"><i class="fa fa-fw fa-google-plus"></i></a>
-		                        </li>
-		                        <li>
-		                            <a href="#"><i class="fa fa-fw fa-twitter"></i></a>
-		                        </li>
-		                        <li>
-		                            <a href="#"><i class="fa fa-fw fa-linkedin"></i></a>
-		                        </li>
-		                        <li>
-		                            <a href="#"><i class="fa fa-fw fa-dribbble"></i></a>
-		                        </li>
-		                    </ul>
-		                </div>
-		                <div class="footer-col col-md-4">
-		                    <h3>About Type'N'Post</h3>
-		                    <p>Type'N'Post lets you post whatever you like to the Internet.</p>
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="footer-below">
-		        <div class="container">
-		            <div class="row">
-		                <div class="col-lg-12">
-		                    Copyright &copy; Type'N'Post 2014
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-		</footer>
-		
-		<script src="{{url_for('static',filename='js/ext/jquery.js')}}"></script>
-		<script src="{{url_for('static',filename='js/ext/bootstrap.min.js')}}"></script>
-		<script src="{{url_for('static',filename='js/app/app.js')}}"></script>		
-	</body>
-</html>
+		<div class="col-sm-6">
+			<div class="modal fade" id="deleteModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" data-dismiss="modal" class="close" aria-hidden="true">&times;</button>
+							<h3>Delete Message</h3>
+						</div>
+						<div class="modal-body">
+							<p class="text-warning">Are you sure you want to perform this action?</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" id="deleteButton">Submit</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{%endblock container%}
+{%block script%}
+	{{super()}}
+	<script src="{{url_for('static',filename='js/app/app.js')}}"></script>		
+{%endblock script%} 

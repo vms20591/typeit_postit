@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	{%block head%}
+	<head>
+		{%block title%}
+			<title>TypeItWePostIt</title>
+		{%endblock title%}
+		{%block link_imports%}
+			<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}" />
+			<link rel="stylesheet" href="{{url_for('static',filename='font-awesome/css/font-awesome.min.css')}}" />
+			<link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" />
+			<link rel="icon" type="image/png" href="{{url_for('static',filename='images/favicon-32x32.png')}}" sizes="32x32" />		
+		{%endblock link_imports%}
+	</head>
+	{%endblock head%}
+	{%block body%}
+		<body>
+			{%block nav%}
+				<nav role="navigation" class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button data-toggle="collapse" data-target="#navbarCollapse" class="navbar-toggle">
+								<span class="sr-only">Toggle</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="#" class="navbar-brand">
+								<span style="display:block">Type'N'Post</span>
+							</a>
+						</div>
+					</div>
+				</nav>
+			{%endblock nav%}
+			{%block container%}
+				<div class="container-fluid">
+					<div class="row">
+						<h3>default content</h3>
+					</div>
+				</div>
+			{%endblock container%}
+			{%block footer%}
+				<footer class="text-center" id="messageFooter">
+					<div class="footer-above">
+						<div class="container">
+						    <div class="row">
+						        <div class="footer-col col-md-4">
+						            <h3>Location</h3>
+						            <p>Chennai, India</p>
+						        </div>
+						        <div class="footer-col col-md-4">
+						            <h3>Around the Web</h3>
+						            <ul class="list-inline">
+						                <li>
+						                    <a href="#"><i class="fa fa-fw fa-facebook"></i></a>
+						                </li>
+						                <li>
+						                    <a href="#"><i class="fa fa-fw fa-google-plus"></i></a>
+						                </li>
+						                <li>
+						                    <a href="#"><i class="fa fa-fw fa-twitter"></i></a>
+						                </li>
+						                <li>
+						                    <a href="#"><i class="fa fa-fw fa-linkedin"></i></a>
+						                </li>
+						                <li>
+						                    <a href="#"><i class="fa fa-fw fa-dribbble"></i></a>
+						                </li>
+						            </ul>
+						        </div>
+						        <div class="footer-col col-md-4">
+						            <h3>About Type'N'Post</h3>
+						            <p>Type'N'Post lets you post whatever you like to the Internet.</p>
+						        </div>
+						    </div>
+						</div>
+					</div>
+					<div class="footer-below">
+						<div class="container">
+						    <div class="row">
+						        <div class="col-lg-12">
+						            Copyright &copy; Type'N'Post 2014
+						        </div>
+						    </div>
+						</div>
+					</div>
+				</footer>
+			{%endblock footer%}
+			{%block script%}
+				<script src="{{url_for('static',filename='js/ext/jquery.js')}}"></script>
+				<script src="{{url_for('static',filename='js/ext/bootstrap.min.js')}}"></script>
+			{%endblock script%}
+		</body>
+	{%endblock body%}
+</html>
